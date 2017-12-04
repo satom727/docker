@@ -1,0 +1,15 @@
+mysql:
+    image: mysql:latest
+    ports:
+        - 3306:3308
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: stub
+php:
+    build: ./php72
+    volumes:
+        - ~/dev/PHP:/var/www/html
+    links:
+        - mysql
+    ports:
+        - 80:80
